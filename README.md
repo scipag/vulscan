@@ -56,7 +56,7 @@ If you want to update your databases, go to the following web site and download 
 * http://www.computec.ch/mruef/software/nmap_nse_vulscan/securitytracker.csv
 * http://www.computec.ch/mruef/software/nmap_nse_vulscan/xforce.csv
 
-##Copy the files into your vulscan folder:
+Copy the files into your vulscan folder:
 
     /vulscan/
 
