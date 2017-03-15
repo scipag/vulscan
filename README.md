@@ -22,14 +22,14 @@ You have to run the following minimal command to initiate a simple vulnerability
 
 There are the following pre-installed databases available at the moment:
 
-* scipvuldb.csv | https://vuldb.com
-* cve.csv | http://cve.mitre.org
-* osvdb.csv | http://www.osvdb.org
-* securityfocus.csv | http://www.securityfocus.com/bid/
-* securitytracker.csv | http://www.securitytracker.com
-* xforce.csv | http://xforce.iss.net
-* expliotdb.csv | http://www.exploit-db.com
-* openvas.csv | http://www.openvas.org
+* scipvuldb.csv - https://vuldb.com
+* cve.csv - http://cve.mitre.org
+* osvdb.csv - http://www.osvdb.org
+* securityfocus.csv - http://www.securityfocus.com/bid/
+* securitytracker.csv - http://www.securitytracker.com
+* xforce.csv - http://xforce.iss.net
+* expliotdb.csv - http://www.exploit-db.com
+* openvas.csv - http://www.openvas.org
 
 ## Single Database Mode
 
