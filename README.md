@@ -49,14 +49,14 @@ The vulnerability databases are updated and assembled on a regularly basis. To s
 
 If you want to update your databases, go to the following web site and download these files:
 
-* http://www.computec.ch/mruef/software/nmap_nse_vulscan/cve.csv
-* http://www.computec.ch/mruef/software/nmap_nse_vulscan/exploitdb.csv
-* http://www.computec.ch/mruef/software/nmap_nse_vulscan/openvas.csv
-* http://www.computec.ch/mruef/software/nmap_nse_vulscan/osvdb.csv
-* http://www.computec.ch/mruef/software/nmap_nse_vulscan/scipvuldb.csv
-* http://www.computec.ch/mruef/software/nmap_nse_vulscan/securityfocus.csv
-* http://www.computec.ch/mruef/software/nmap_nse_vulscan/securitytracker.csv
-* http://www.computec.ch/mruef/software/nmap_nse_vulscan/xforce.csv
+* http://www.computec.ch/projekte/vulscan/download/cve.csv
+* http://www.computec.ch/projekte/vulscan/download/exploitdb.csv
+* http://www.computec.ch/projekte/vulscan/download/openvas.csv
+* http://www.computec.ch/projekte/vulscan/download/osvdb.csv
+* http://www.computec.ch/projekte/vulscan/download/scipvuldb.csv
+* http://www.computec.ch/projekte/vulscan/download/securityfocus.csv
+* http://www.computec.ch/projekte/vulscan/download/securitytracker.csv
+* http://www.computec.ch/projekte/vulscan/download/xforce.csv
 
 Copy the files into your vulscan folder:
 
