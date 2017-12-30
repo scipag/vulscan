@@ -9,14 +9,14 @@
 ## the files in the vulscan folder.
 ##
 declare -a FILES=(
-    "http://www.computec.ch/projekte/vulscan/download/cve.csv"
-    "http://www.computec.ch/projekte/vulscan/download/exploitdb.csv"
-    "http://www.computec.ch/projekte/vulscan/download/openvas.csv"
-    "http://www.computec.ch/projekte/vulscan/download/osvdb.csv"
-    "http://www.computec.ch/projekte/vulscan/download/scipvuldb.csv"
-    "http://www.computec.ch/projekte/vulscan/download/securityfocus.csv"
-    "http://www.computec.ch/projekte/vulscan/download/securitytracker.csv"
-    "http://www.computec.ch/projekte/vulscan/download/xforce.csv"
+    "https://raw.githubusercontent.com/scipag/vulscan/master/cve.csv"
+    "https://raw.githubusercontent.com/scipag/vulscan/master/exploitdb.csv"
+    "https://raw.githubusercontent.com/scipag/vulscan/master/openvas.csv"
+    "https://raw.githubusercontent.com/scipag/vulscan/master/osvdb.csv"
+    "https://raw.githubusercontent.com/scipag/vulscan/master/scipvuldb.csv"
+    "https://raw.githubusercontent.com/scipag/vulscan/master/securityfocus.csv"
+    "https://raw.githubusercontent.com/scipag/vulscan/master/securitytracker.csv"
+    "https://raw.githubusercontent.com/scipag/vulscan/master/xforce.csv"
 )
 
 UPDATED=false
@@ -51,17 +51,18 @@ cd downloading
 ##
 ## For each file, we want to download it, and see if it differs from old one.
 ##    If it differs, we assume that it is new, and thus we want to replace the old one.
+##    Unfortunately GitHub is issuing the cert for www.github.com only and not for other
+##    domains which is why we need to ignore cert warnings
 ##
 for file in "${FILES[@]}"
-do
-    
+do    
     logIfDebug "Downloading ${file}..."
-    wget --quiet ${file}
+    wget --quiet --no-check-certificate ${file}
     filename=$(echo ${file} | awk -F/ '{print $NF}')
-    result=$(diff --suppress-common-lines --speed-large-files -y ${filename} ../${filename}  | wc -l)
+    result=$(diff --suppress-common-lines --speed-large-files -y ${filename} ../../../${filename} | wc -l)
     if [ ${result} -ne 0 ]; then
 	logIfDebug "Updating ${filename} as it differs"
-	mv ${filename} ..
+	mv ${filename} ../../../
 	UPDATED=true
     fi
 done
