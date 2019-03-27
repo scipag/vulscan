@@ -197,7 +197,7 @@ Download: http://www.computec.ch/mruef/?s=software&l=x
 
 --@thanks
 -- I would like to thank a number of people which supported me in
--- developing this script: Stefan Friedli, Simon Zumstein, Sean Rütschi,
+-- developing this script: Stefan Friedli, Simon Zumstein, Sean RÃ¼tschi,
 -- Pascal Schaufelberger, David Fifield, Nabil Ouchn, Doggy Dog, Matt
 -- Brown, Matthew Phillips, and Sebastian Brabetzl.
 
@@ -213,6 +213,17 @@ portrule = function(host, port)
 	else
 		stdnse.print_debug(1, "vulscan: No version detection data available. Analysis not possible.")
 	end
+end
+
+function split(inputstr, sep)
+        if sep == nil then
+                sep = "%s"
+        end
+        local t={}
+        for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+                table.insert(t, str)
+        end
+        return t
 end
 
 action = function(host, port)
@@ -322,7 +333,7 @@ function find_vulnerabilities(prod, ver, db)
 	prod = string.gsub(prod, " smtpd", "")
 	prod = string.gsub(prod, " ftpd", "")
 
-	local prod_words = stdnse.strsplit(" ", prod)
+	local prod_words = split(" ", prod)
 
 	stdnse.print_debug(1, "vulscan: Starting search of " .. prod ..
 		" in " .. db ..
@@ -464,7 +475,7 @@ end
 
 -- Get the row of a CSV file
 function extract_from_table(line, col, del)
-	local val = stdnse.strsplit(del, line)
+	local val = split(del, line)
 
 	if type(val[col]) == "string" then
 		return val[col]
