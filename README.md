@@ -12,6 +12,11 @@ Please install the files into the following folder of your Nmap installation:
 
     Nmap\scripts\vulscan\*
 
+Clone the GitHub repository like this:
+
+    git clone https://github.com/scipag/vulscan scipag_vulscan
+    ln -s `pwd`/scipag_vulscan /usr/share/nmap/scripts/vulscan    
+
 ## Usage
 
 You have to run the following minimal command to initiate a simple vulnerability scan:
