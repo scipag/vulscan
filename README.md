@@ -29,12 +29,12 @@ There are the following pre-installed databases available at the moment:
 
 * scipvuldb.csv - https://vuldb.com
 * cve.csv - https://cve.mitre.org
-* osvdb.csv - http://www.osvdb.org (end-of-life)
 * securityfocus.csv - https://www.securityfocus.com/bid/
-* securitytracker.csv - https://www.securitytracker.com (end-of-life)
 * xforce.csv - https://exchange.xforce.ibmcloud.com/
 * expliotdb.csv - https://www.exploit-db.com
 * openvas.csv - http://www.openvas.org
+* securitytracker.csv - https://www.securitytracker.com (end-of-life)
+* osvdb.csv - http://www.osvdb.org (end-of-life)
 
 ## Single Database Mode
 
@@ -127,4 +127,4 @@ Every default database comes with an url and a link, which is used during the sc
 
 ## Disclaimer
 
-Keep in mind that this kind of derivative vulnerability scanning heavily relies on the confidence of the version detection of nmap, the amount of documented vulnerebilities and the accuracy of pattern matching. The existence of potential flaws is not verified with additional scanning nor exploiting techniques.
+Keep in mind that this kind of derivative vulnerability scanning heavily relies on the confidence of the version detection of nmap, the amount of documented vulnerabilities and the accuracy of pattern matching. The existence of potential flaws is not verified with additional scanning nor exploiting techniques.
