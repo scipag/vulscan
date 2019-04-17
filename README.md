@@ -4,7 +4,7 @@
 
 Vulscan is a module which enhances nmap to a vulnerability scanner. The nmap option -sV enables version detection per service which is used to determine potential flaws according to the identified product. The data is looked up in an offline version of VulDB.
 
-![Nmap NSE Vulscan](http://www.computec.ch/projekte/vulscan/introduction/screenshot.png)
+![Nmap NSE Vulscan](https://www.computec.ch/projekte/vulscan/introduction/screenshot.png)
 
 ## Installation
 
@@ -28,12 +28,12 @@ You have to run the following minimal command to initiate a simple vulnerability
 There are the following pre-installed databases available at the moment:
 
 * scipvuldb.csv - https://vuldb.com
-* cve.csv - http://cve.mitre.org
-* osvdb.csv - http://www.osvdb.org
-* securityfocus.csv - http://www.securityfocus.com/bid/
-* securitytracker.csv - http://www.securitytracker.com
-* xforce.csv - http://xforce.iss.net
-* expliotdb.csv - http://www.exploit-db.com
+* cve.csv - https://cve.mitre.org
+* osvdb.csv - http://www.osvdb.org (end-of-life)
+* securityfocus.csv - https://www.securityfocus.com/bid/
+* securitytracker.csv - https://www.securitytracker.com (end-of-life)
+* xforce.csv - https://exchange.xforce.ibmcloud.com/
+* expliotdb.csv - https://www.exploit-db.com
 * openvas.csv - http://www.openvas.org
 
 ## Single Database Mode
@@ -54,14 +54,14 @@ The vulnerability databases are updated and assembled on a regularly basis. To s
 
 If you want to update your databases, go to the following web site and download these files:
 
-* http://www.computec.ch/projekte/vulscan/download/cve.csv
-* http://www.computec.ch/projekte/vulscan/download/exploitdb.csv
-* http://www.computec.ch/projekte/vulscan/download/openvas.csv
-* http://www.computec.ch/projekte/vulscan/download/osvdb.csv
-* http://www.computec.ch/projekte/vulscan/download/scipvuldb.csv
-* http://www.computec.ch/projekte/vulscan/download/securityfocus.csv
-* http://www.computec.ch/projekte/vulscan/download/securitytracker.csv
-* http://www.computec.ch/projekte/vulscan/download/xforce.csv
+* https://www.computec.ch/projekte/vulscan/download/cve.csv
+* https://www.computec.ch/projekte/vulscan/download/exploitdb.csv
+* https://www.computec.ch/projekte/vulscan/download/openvas.csv
+* https://www.computec.ch/projekte/vulscan/download/osvdb.csv
+* https://www.computec.ch/projekte/vulscan/download/scipvuldb.csv
+* https://www.computec.ch/projekte/vulscan/download/securityfocus.csv
+* https://www.computec.ch/projekte/vulscan/download/securitytracker.csv
+* https://www.computec.ch/projekte/vulscan/download/xforce.csv
 
 Copy the files into your vulscan folder:
 
