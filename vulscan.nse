@@ -5,7 +5,7 @@ INTRODUCTION
 Vulscan is a module which enhances nmap to a vulnerability scanner. The
 nmap option -sV enables version detection per service which is used to
 determine potential flaws according to the identified product. The data
-is looked up in an offline version scip VulDB.
+is looked up in an offline version of VulDB.
 
 INSTALLATION
 
@@ -26,14 +26,14 @@ VULNERABILITY DATABASE
 There are the following pre-installed databases available at the
 moment:
 
-   scipvuldb.csv       | http://www.scip.ch/en/?vuldb
-   cve.csv             | http://cve.mitre.org
-   osvdb.csv           | http://www.osvdb.org
-   securityfocus.csv   | http://www.securityfocus.com/bid/
-   securitytracker.csv | http://www.securitytracker.com
-   xforce.csv          | http://xforce.iss.net
-   expliotdb.csv       | http://www.exploit-db.com
+   scipvuldb.csv       | https://vuldb.com
+   cve.csv             | https://cve.mitre.org
+   securityfocus.csv   | https://www.securityfocus.com/bid/
+   xforce.csv          | https://exchange.xforce.ibmcloud.com/
+   expliotdb.csv       | https://www.exploit-db.com
    openvas.csv         | http://www.openvas.org
+   securitytracker.csv | https://www.securitytracker.com (end-of-life)
+   osvdb.csv           | http://www.osvdb.org (end-of-life)
 
 SINGLE DATABASE MODE
 
@@ -61,18 +61,23 @@ vulnerability databases up-to-date.
 If you want to update your databases, go to the following web site and
 download these files:
 
-   http://www.computec.ch/mruef/software/nmap_nse_vulscan/cve.csv
-   http://www.computec.ch/mruef/software/nmap_nse_vulscan/exploitdb.csv
-   http://www.computec.ch/mruef/software/nmap_nse_vulscan/openvas.csv
-   http://www.computec.ch/mruef/software/nmap_nse_vulscan/osvdb.csv
-   http://www.computec.ch/mruef/software/nmap_nse_vulscan/scipvuldb.csv
-   http://www.computec.ch/mruef/software/nmap_nse_vulscan/securityfocus.csv
-   http://www.computec.ch/mruef/software/nmap_nse_vulscan/securitytracker.csv
-   http://www.computec.ch/mruef/software/nmap_nse_vulscan/xforce.csv
+   https://www.computec.ch/mruef/software/nmap_nse_vulscan/cve.csv
+   https://www.computec.ch/mruef/software/nmap_nse_vulscan/exploitdb.csv
+   https://www.computec.ch/mruef/software/nmap_nse_vulscan/openvas.csv
+   https://www.computec.ch/mruef/software/nmap_nse_vulscan/osvdb.csv
+   https://www.computec.ch/mruef/software/nmap_nse_vulscan/scipvuldb.csv
+   https://www.computec.ch/mruef/software/nmap_nse_vulscan/securityfocus.csv
+   https://www.computec.ch/mruef/software/nmap_nse_vulscan/securitytracker.csv
+   https://www.computec.ch/mruef/software/nmap_nse_vulscan/xforce.csv
 
 Copy the files into your vulscan folder:
 
    /vulscan/
+
+Clone the GitHub repository like this:
+
+   git clone https://github.com/scipag/vulscan scipag_vulscan
+   ln -s `pwd`/scipag_vulscan /usr/share/nmap/scripts/vulscan    
 
 VERSION DETECTION
 
@@ -161,7 +166,7 @@ additional scanning nor exploiting techniques.
 
 LINKS
 
-Download: http://www.computec.ch/mruef/?s=software&l=x
+Download: https://www.computec.ch/mruef/?s=software&l=x
 
 ]]
 
@@ -175,6 +180,7 @@ Download: http://www.computec.ch/mruef/?s=software&l=x
 -- | [14176] MasqMail Piped Aliases Privilege Escalation
 
 --@changelog
+-- v2.1 | 04/17/2019 | Marc Ruef | Minor fixes
 -- v2.0 | 08/14/2013 | Marc Ruef | Considering version data
 -- v1.0 | 06/18/2013 | Marc Ruef | Dynamic report structures
 -- v0.8 | 06/17/2013 | Marc Ruef | Multi-database support
@@ -191,7 +197,7 @@ Download: http://www.computec.ch/mruef/?s=software&l=x
 
 --@todos
 -- Create product lookup table to match nmap<->db
--- Enhance nmap/db to be CPE compliant (http://cpe.mitre.org)
+-- Enhance nmap/db to be CPE compliant (https://cpe.mitre.org)
 -- Display of identification confidence (e.g. +full_match, -partial_match)
 -- Add auto-update feature for databases (download & install)
 
@@ -201,8 +207,8 @@ Download: http://www.computec.ch/mruef/?s=software&l=x
 -- Pascal Schaufelberger, David Fifield, Nabil Ouchn, Doggy Dog, Matt
 -- Brown, Matthew Phillips, and Sebastian Brabetzl.
 
-author = "Marc Ruef, marc.ruef-at-computec.ch, http://www.computec.ch/mruef/"
-license = "Same as Nmap--See http://nmap.org/book/man-legal.html"
+author = "Marc Ruef, marc.ruef-at-computec.ch, https://www.computec.ch/mruef/"
+license = "Same as Nmap--See https://nmap.org/book/man-legal.html"
 categories = {"default", "safe", "vuln"}
 
 local stdnse = require("stdnse")
@@ -230,11 +236,11 @@ action = function(host, port)
 	local prod = port.version.product	-- product name
 	local ver = port.version.version	-- product version
 	local struct = "[{id}] {title}\n"	-- default report structure
-	local db = {}						-- vulnerability database
-	local db_link = ""					-- custom link for vulnerability databases
-	local vul = {}						-- details for the vulnerability
-	local v_count = 0					-- counter for the vulnerabilities
-	local s = ""						-- the output string
+	local db = {}				-- vulnerability database
+	local db_link = ""			-- custom link for vulnerability databases
+	local vul = {}				-- details for the vulnerability
+	local v_count = 0			-- counter for the vulnerabilities
+	local s = ""				-- the output string
 
 	stdnse.print_debug(1, "vulscan: Found service " .. prod)
 
@@ -285,14 +291,14 @@ action = function(host, port)
 		end
 	else
 		-- Add your own database, if you want to include it in the multi db mode
-		db[1] = {name="scip VulDB",			file="scipvuldb.csv",		url="http://www.scip.ch/en/?vuldb",			link="http://www.scip.ch/en/?vuldb.{id}"}
-		db[2] = {name="MITRE CVE",			file="cve.csv",				url="http://cve.mitre.org",					link="http://cve.mitre.org/cgi-bin/cvename.cgi?name={id}"}
-		db[3] = {name="OSVDB",				file="osvdb.csv",			url="http://www.osvdb.org",					link="http://www.osvdb.org/{id}"}
-		db[4] = {name="SecurityFocus",		file="securityfocus.csv",	url="http://www.securityfocus.com/bid/",	link="http://www.securityfocus.com/bid/{id}"}
-		db[5] = {name="SecurityTracker",	file="securitytracker.csv",	url="http://www.securitytracker.com",		link="http://www.securitytracker.com/id/{id}"}
-		db[6] = {name="IBM X-Force",		file="xforce.csv",			url="http://xforce.iss.net",				link="http://xforce.iss.net/xforce/xfdb/{id}"}
-		db[7] = {name="Exploit-DB",			file="exploitdb.csv",		url="http://www.exploit-db.com",			link="http://www.exploit-db.com/exploits/{id}"}
-		db[8] = {name="OpenVAS (Nessus)",	file="openvas.csv",			url="http://www.openvas.org",				link="http://www.tenable.com/plugins/index.php?view=single&id={id}"}
+		db[1] = {name="VulDB",			file="scipvuldb.csv",		url="https://vuldb.com",			link="https://vuldb.com/id.{id}"}
+		db[2] = {name="MITRE CVE",		file="cve.csv",			url="https://cve.mitre.org",			link="https://cve.mitre.org/cgi-bin/cvename.cgi?name={id}"}
+		db[3] = {name="SecurityFocus",		file="securityfocus.csv",	url="https://www.securityfocus.com/bid/",	link="https://www.securityfocus.com/bid/{id}"}
+		db[4] = {name="IBM X-Force",		file="xforce.csv",		url="https://exchange.xforce.ibmcloud.com",	link="https://exchange.xforce.ibmcloud.com/vulnerabilities/{id}"}
+		db[5] = {name="Exploit-DB",		file="exploitdb.csv",		url="https://www.exploit-db.com",		link="https://www.exploit-db.com/exploits/{id}"}
+		db[6] = {name="OpenVAS (Nessus)",	file="openvas.csv",		url="http://www.openvas.org",			link="https://www.tenable.com/plugins/nessus/{id}"}
+		db[7] = {name="SecurityTracker",	file="securitytracker.csv",	url="https://www.securitytracker.com",		link="https://www.securitytracker.com/id/{id}"}
+		db[8] = {name="OSVDB",			file="osvdb.csv",		url="http://www.osvdb.org",			link="http://www.osvdb.org/{id}"}
 
 		stdnse.print_debug(1, "vulscan: Using multi db mode (" .. #db .. " databases) ...")
 		for i,v in ipairs(db) do
@@ -320,7 +326,7 @@ end
 -- Find the product matches in the vulnerability databases
 function find_vulnerabilities(prod, ver, db)
 	local v = {}			-- matching vulnerabilities
-	local v_id				-- id of vulnerability
+	local v_id			-- id of vulnerability
 	local v_title			-- title of vulnerability
 	local v_title_lower		-- title of vulnerability in lowercase for speedup
 	local v_found			-- if a match could be found
