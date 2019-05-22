@@ -221,17 +221,6 @@ portrule = function(host, port)
 	end
 end
 
-function split(inputstr, sep)
-        if sep == nil then
-                sep = "%s"
-        end
-        local t={}
-        for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
-                table.insert(t, str)
-        end
-        return t
-end
-
 action = function(host, port)
 	local prod = port.version.product	-- product name
 	local ver = port.version.version	-- product version
@@ -339,7 +328,7 @@ function find_vulnerabilities(prod, ver, db)
 	prod = string.gsub(prod, " smtpd", "")
 	prod = string.gsub(prod, " ftpd", "")
 
-	local prod_words = split(" ", prod)
+	local prod_words = stdnse.strsplit(" ", prod)
 
 	stdnse.print_debug(1, "vulscan: Starting search of " .. prod ..
 		" in " .. db ..
@@ -481,7 +470,7 @@ end
 
 -- Get the row of a CSV file
 function extract_from_table(line, col, del)
-	local val = split(del, line)
+	local val = stdnse.strsplit(del, line)
 
 	if type(val[col]) == "string" then
 		return val[col]
