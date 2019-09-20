@@ -180,6 +180,7 @@ Download: https://www.computec.ch/mruef/?s=software&l=x
 -- | [14176] MasqMail Piped Aliases Privilege Escalation
 
 --@changelog
+-- v2.2 | 09/20/2019 | Marc Ruef | Fixed support for Nmap 7.80 onwards
 -- v2.1 | 04/17/2019 | Marc Ruef | Minor fixes
 -- v2.0 | 08/14/2013 | Marc Ruef | Considering version data
 -- v1.0 | 06/18/2013 | Marc Ruef | Dynamic report structures
@@ -212,6 +213,8 @@ license = "Same as Nmap--See https://nmap.org/book/man-legal.html"
 categories = {"default", "safe", "vuln"}
 
 local stdnse = require("stdnse")
+local have_stringaux, stringaux = pcall(require, "stringaux")
+local strsplit = (have_stringaux and stringaux or stdnse).strsplit
 
 portrule = function(host, port)
 	if port.version.product ~= nil and port.version.product ~= "" then
@@ -328,7 +331,7 @@ function find_vulnerabilities(prod, ver, db)
 	prod = string.gsub(prod, " smtpd", "")
 	prod = string.gsub(prod, " ftpd", "")
 
-	local prod_words = stdnse.strsplit(" ", prod)
+	local prod_words = strsplit(" ", prod)
 
 	stdnse.print_debug(1, "vulscan: Starting search of " .. prod ..
 		" in " .. db ..
@@ -470,7 +473,7 @@ end
 
 -- Get the row of a CSV file
 function extract_from_table(line, col, del)
-	local val = stdnse.strsplit(del, line)
+	local val = strsplit(del, line)
 
 	if type(val[col]) == "string" then
 		return val[col]
