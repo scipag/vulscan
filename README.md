@@ -35,7 +35,7 @@ There are the following pre-installed databases available at the moment:
 * cve.csv - https://cve.mitre.org
 * securityfocus.csv - https://www.securityfocus.com/bid/
 * xforce.csv - https://exchange.xforce.ibmcloud.com/
-* expliotdb.csv - https://www.exploit-db.com
+* exploitdb.csv - https://www.exploit-db.com
 * openvas.csv - http://www.openvas.org
 * securitytracker.csv - https://www.securitytracker.com (end-of-life)
 * osvdb.csv - http://www.osvdb.org (end-of-life)
