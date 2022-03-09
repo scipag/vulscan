@@ -52,6 +52,8 @@ It is also possible to create and reference your own databases. This requires to
 
 Just execute vulscan like you would by refering to one of the pre-delivered databases. Feel free to share your own database and vulnerability connection with me, to add it to the official repository.
 
+<!--
+Commented out Update Database section due to it being outdated by a lot of years.
 ## Update Database
 
 The vulnerability databases are updated and assembled on a regularly basis. To support the latest disclosed vulnerabilities, keep your local vulnerability databases up-to-date.
@@ -70,7 +72,8 @@ If you want to update your databases, go to the following web site and download 
 Copy the files into your vulscan folder:
 
     /vulscan/
-
+END OF OBSOLETE PART
+-->
 ## Version Detection
 
 If the version detection was able to identify the software version and the vulnerability database is providing such details, also this data is matched.
