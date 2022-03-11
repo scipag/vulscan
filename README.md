@@ -56,7 +56,12 @@ Just execute vulscan like you would by refering to one of the pre-delivered data
 
 The vulnerability databases are updated and assembled on a regularly basis. To support the latest disclosed vulnerabilities, keep your local vulnerability databases up-to-date.
 
-If you want to update your databases, go to the following web site and download these files:
+To automatically update the databases, simply set execution permissions to the `update.sh` file and run it:
+
+    chmod 744 update.sh
+    ./update.sh
+
+If you want to manually update your databases, go to the following web site and download these files:
 
 * https://www.computec.ch/projekte/vulscan/download/cve.csv
 * https://www.computec.ch/projekte/vulscan/download/exploitdb.csv
