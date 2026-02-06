@@ -35,7 +35,7 @@ There are the following pre-installed databases available at the moment:
 * cve.csv - https://cve.mitre.org
 * securityfocus.csv - https://www.securityfocus.com/bid/
 * xforce.csv - https://exchange.xforce.ibmcloud.com/
-* expliotdb.csv - https://www.exploit-db.com
+* exploitdb.csv - https://www.exploit-db.com
 * openvas.csv - http://www.openvas.org
 * securitytracker.csv - https://www.securitytracker.com (end-of-life)
 * osvdb.csv - http://www.osvdb.org (end-of-life)
@@ -52,6 +52,8 @@ It is also possible to create and reference your own databases. This requires to
 
 Just execute vulscan like you would by refering to one of the pre-delivered databases. Feel free to share your own database and vulnerability connection with me, to add it to the official repository.
 
+<!--
+Commented out Update Database section due to it being outdated by a lot of years.
 ## Update Database
 
 The vulnerability databases are updated and assembled on a regularly basis. To support the latest disclosed vulnerabilities, keep your local vulnerability databases up-to-date.
@@ -75,7 +77,8 @@ If you want to manually update your databases, go to the following web site and 
 Copy the files into your vulscan folder:
 
     /vulscan/
-
+END OF OBSOLETE PART
+-->
 ## Version Detection
 
 If the version detection was able to identify the software version and the vulnerability database is providing such details, also this data is matched.
